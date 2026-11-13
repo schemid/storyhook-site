@@ -198,7 +198,7 @@ footer{border-top:1px solid var(--line);padding:40px 0 48px;color:var(--muted);f
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)){say('Enter a full email address, like name@email.com.','err');email.focus();return;}
     btn.disabled=true;btn.textContent='Joining…';say('');
     function body(){var d=new FormData();d.append('fields[email]',v);d.append('ml-submit','1');d.append('anticsrf','true');return d;}
-    var done=function(){say('You’re on the list. Keep an eye on your inbox.','ok');form.reset();};
+    var done=function(){say('You’re on the list! Check your inbox to confirm your email.','ok');form.reset();};
     var fail=function(){say('That didn’t go through. Check your connection and try again.','err');};
     fetch(form.action,{method:'POST',body:body(),headers:{'Accept':'application/json'}})
       .then(function(r){return r.json().catch(function(){return {};}).then(function(j){ if(r.ok && j.success!==false){done();} else {fail();} });})
